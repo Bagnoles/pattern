@@ -5,8 +5,7 @@ class SquareAreaLib
 {
     public function getSquareArea(int $diagonal)
     {
-        $area = ($diagonal**2)/2;
-        return $area;
+        return ($diagonal ** 2) / 2;
     }
 }
 
@@ -14,8 +13,7 @@ class CircleAreaLib
 {
     public function getCircleArea(int $diagonal)
     {
-        $area = (M_PI * $diagonal**2)/4;
-        return $area;
+        return (M_PI * $diagonal ** 2) / 4;
     }
 }
 
@@ -34,29 +32,29 @@ interface ICircle
 
 class SquareAdapter implements ISquare
 {
-    private $SquareAreaLib;
+    private $squareAreaLib;
 
-    public function __construct(SquareAreaLib $SquareAreaLib) {
-        $this->$SquareAreaLib = $SquareAreaLib;
+    public function __construct(SquareAreaLib $squareAreaLib) {
+        $this->squareAreaLib = $squareAreaLib;
     }
 
     public function squareArea(int $sideSquare) {
         $diagonalSquare = sqrt($sideSquare**2 * 2);
-        $this->$SquareAreaLib->getSquareArea($diagonalSquare);
+        $this->squareAreaLib->getSquareArea($diagonalSquare);
     }
 }
 
 class CircleAdapter implements ICircle
 {
-    private $CircleAreaLib;
+    private $circleAreaLib;
 
-    public function __construct(CircleAreaLib $CircleAreaLib) {
-        $this->$CircleAreaLib = $CircleAreaLib;
+    public function __construct(CircleAreaLib $circleAreaLib) {
+        $this->circleAreaLib = $circleAreaLib;
     }
 
     public function circleArea(int $circumference) {
         $diagonalCircle = $circumference / M_PI;
-        $this->$CircleAreaLib->getCircleArea($diagonalCircle);
+        $this->circleAreaLib->getCircleArea($diagonalCircle);
     }
     
 }
